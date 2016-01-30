@@ -10,6 +10,6 @@ public class LayerUI : MonoBehaviour
     public void DisplayInputKey(string key)
     {
         this.InputKeyText.text = key;
-        this.InputKey.GetComponent<Animator>().Play("InputKeyDisplay");
+        this.InputKey.GetComponent<Animator>().SetTrigger("display");
     }
 }
