@@ -14,6 +14,8 @@ public class Level : ScriptableObject
 
     [System.NonSerialized]
     private float startTime;
+    [System.NonSerialized]
+    private List<LayerUI> LayersUI;
 
 #if UNITY_EDITOR
     [MenuItem("Assets/Create/Level")]
@@ -31,19 +33,20 @@ public class Level : ScriptableObject
     }
 #endif
 
-    public void Start()
+    public void StartLevel(List<LayerUI> layersUI)
     {
         this.startTime = Time.time;
+        this.LayersUI = layersUI;
     }
 
-    public void Update()
+    public void UpdateLevel()
     {
         float timeDuration = 1 / (this.Bpm / 60);
         float time = (Time.time - this.startTime) / timeDuration;
 
         for (int index = 0; index < this.Layers.Count; index++)
         {
-            this.Layers[index].Update(time);
+            this.Layers[index].Update(time, this.LayersUI[index]);
         }
     }
 }

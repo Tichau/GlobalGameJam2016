@@ -13,7 +13,7 @@ public class Layer
     [System.NonSerialized]
     private int loopCount;
 
-    public void Update(float time)
+    public void Update(float time, LayerUI layerUI)
     {
         if (time >= this.StartingTime)
         {
@@ -31,7 +31,7 @@ public class Layer
 
             for (int index = 0; index < this.Notes.Count; index++)
             {
-                this.Notes[index].Update(timeSinceCurrentLoopStart);
+                this.Notes[index].Update(timeSinceCurrentLoopStart, layerUI);
             }
         }
     }

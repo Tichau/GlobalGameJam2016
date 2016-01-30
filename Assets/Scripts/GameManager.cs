@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
     public Camera gameCamera;
+    public List<LayerUI> LayersUI = new List<LayerUI>();
 
     public static GameManager Instance
     {
@@ -49,11 +51,11 @@ public class GameManager : MonoBehaviour
 
 	private void Start ()
 	{
-	    this.Level.Start();
+	    this.Level.StartLevel(LayersUI);
 	}
 	
 	private void Update ()
 	{
-	    this.Level.Update();
+	    this.Level.UpdateLevel();
 	}
 }

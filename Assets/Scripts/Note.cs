@@ -10,11 +10,15 @@ public class Note
     public AudioClip AudioClip;
     public Action Action;
     public object ActionParameter;
+    public KeyCode InputKey;
+    public float AnimAdvance = 0.2f;
 
     [System.NonSerialized]
     private bool alreadyPlayed;
+    [System.NonSerialized]
+    private bool animAlreadyPlayed;
 
-    public void Update(float time)
+    public void Update(float time, LayerUI layerUI)
     {
         if (time >= this.StartTime && !this.alreadyPlayed)
         {
@@ -28,10 +32,16 @@ public class Note
                     break;
             }
         }
+        else if (time >= this.StartTime - this.AnimAdvance && !this.animAlreadyPlayed)
+        {
+            layerUI.DisplayInputKey(Enum.GetName(typeof(KeyCode), this.InputKey));
+            this.animAlreadyPlayed = true;
+        }   
     }
 
     public void Reset()
     {
         this.alreadyPlayed = false;
+        this.animAlreadyPlayed = false;
     }
 }
