@@ -13,14 +13,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bpm: 80
   Layers:
-  - StartingMeasure: 0
-    DurationInNumberOfMeasure: 0
+  - StartingTime: 0
+    LoopDurationInNumberOfTimes: 4
     Notes:
     - StartTime: 0
-      AudioClip: {fileID: 8300000, guid: 1d7b1abe89be61b4f86a5036366df250, type: 3}
-    - StartTime: 2
       AudioClip: {fileID: 8300000, guid: f7aaffd6e0716714cb451dc7368a5a55, type: 3}
-    - StartTime: 4
+    - StartTime: 1
+      AudioClip: {fileID: 8300000, guid: f7aaffd6e0716714cb451dc7368a5a55, type: 3}
+    - StartTime: 1.5
       AudioClip: {fileID: 8300000, guid: e099d53e0fe85314886d3bf277b08683, type: 3}
-    - StartTime: 6
+    - StartTime: 3
       AudioClip: {fileID: 8300000, guid: acb88b1d8c6dbc440887c2f082f80234, type: 3}
+  - StartingTime: 0
+    LoopDurationInNumberOfTimes: 1
+    Notes:
+    - StartTime: 0
+      AudioClip: {fileID: 8300000, guid: dc217a81e757e5c4f8c10a261e7d54c3, type: 3}
