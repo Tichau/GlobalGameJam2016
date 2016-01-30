@@ -15,34 +15,34 @@ MonoBehaviour:
   Layers:
   - Name: Beat
     StartingTime: 4
-    LoopDurationInNumberOfTimes: 1
+    TimesByLoop: 1
     Notes:
     - StartTime: 0
       AudioClip: {fileID: 8300000, guid: dc217a81e757e5c4f8c10a261e7d54c3, type: 3}
       Action: 1
-      InputKey: 98
+      InputKey: 0
       AnimAdvance: 0.2
   - Name: Bass
     StartingTime: 4
-    LoopDurationInNumberOfTimes: 4
+    TimesByLoop: 8
     Notes:
     - StartTime: 0
-      AudioClip: {fileID: 8300000, guid: f7aaffd6e0716714cb451dc7368a5a55, type: 3}
+      AudioClip: {fileID: 8300000, guid: d67acad9bd0c861428363258b4dc5b47, type: 3}
       Action: 0
-      InputKey: 97
+      InputKey: 0
       AnimAdvance: 0.2
     - StartTime: 1
-      AudioClip: {fileID: 8300000, guid: f7aaffd6e0716714cb451dc7368a5a55, type: 3}
+      AudioClip: {fileID: 8300000, guid: d67acad9bd0c861428363258b4dc5b47, type: 3}
       Action: 0
-      InputKey: 97
+      InputKey: 0
       AnimAdvance: 0.2
     - StartTime: 1.5
-      AudioClip: {fileID: 8300000, guid: e099d53e0fe85314886d3bf277b08683, type: 3}
+      AudioClip: {fileID: 8300000, guid: 0d1dbd3e06d8acb458828c12536a7e28, type: 3}
       Action: 0
-      InputKey: 122
+      InputKey: 0
       AnimAdvance: 0.2
     - StartTime: 3
-      AudioClip: {fileID: 8300000, guid: acb88b1d8c6dbc440887c2f082f80234, type: 3}
+      AudioClip: {fileID: 8300000, guid: 5c1afb789bd83d34297b83a75ed894f6, type: 3}
       Action: 0
-      InputKey: 101
+      InputKey: 0
       AnimAdvance: 0.2

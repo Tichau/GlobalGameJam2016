@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8654419c4c7f25148a7a95328f9b3111, type: 3}
-  m_Name: LevelTest
+  m_Name: LevelTest 2
   m_EditorClassIdentifier: 
   Bpm: 80
   Layers:
@@ -20,15 +20,23 @@ MonoBehaviour:
     - StartTime: 0
       AudioClip: {fileID: 8300000, guid: d67acad9bd0c861428363258b4dc5b47, type: 3}
       Action: 0
+      InputKey: 0
+      AnimAdvance: 0.2
     - StartTime: 1
       AudioClip: {fileID: 8300000, guid: d67acad9bd0c861428363258b4dc5b47, type: 3}
       Action: 0
+      InputKey: 0
+      AnimAdvance: 0.2
     - StartTime: 1.5
       AudioClip: {fileID: 8300000, guid: 0d1dbd3e06d8acb458828c12536a7e28, type: 3}
       Action: 0
+      InputKey: 0
+      AnimAdvance: 0.2
     - StartTime: 3
       AudioClip: {fileID: 8300000, guid: 5c1afb789bd83d34297b83a75ed894f6, type: 3}
       Action: 0
+      InputKey: 0
+      AnimAdvance: 0.2
   - Name: Beat
     StartingTime: 0
     TimesByLoop: 1
@@ -36,19 +44,29 @@ MonoBehaviour:
     - StartTime: 0
       AudioClip: {fileID: 8300000, guid: dc217a81e757e5c4f8c10a261e7d54c3, type: 3}
       Action: 1
-  - Name: Synth
+      InputKey: 0
+      AnimAdvance: 0.2
+  - Name: Vocal
     StartingTime: 0
-    TimesByLoop: 4
+    TimesByLoop: 16
     Notes:
     - StartTime: 0
-      AudioClip: {fileID: 8300000, guid: 6b9a415eda6495a4a88b24c5a4987682, type: 3}
+      AudioClip: {fileID: 8300000, guid: 2d6cc6770e39f3545bc5afe8c7ae108a, type: 3}
       Action: 0
-    - StartTime: 0.75
-      AudioClip: {fileID: 8300000, guid: 6b9a415eda6495a4a88b24c5a4987682, type: 3}
+      InputKey: 0
+      AnimAdvance: 0.2
+    - StartTime: 4
+      AudioClip: {fileID: 8300000, guid: 2d6cc6770e39f3545bc5afe8c7ae108a, type: 3}
       Action: 0
-    - StartTime: 1.5
-      AudioClip: {fileID: 8300000, guid: 6b9a415eda6495a4a88b24c5a4987682, type: 3}
+      InputKey: 0
+      AnimAdvance: 0.2
+    - StartTime: 8
+      AudioClip: {fileID: 8300000, guid: c17888c555a4b234386f287f6876e126, type: 3}
       Action: 0
-    - StartTime: 2.25
-      AudioClip: {fileID: 8300000, guid: 6b9a415eda6495a4a88b24c5a4987682, type: 3}
+      InputKey: 0
+      AnimAdvance: 0.2
+    - StartTime: 12
+      AudioClip: {fileID: 8300000, guid: c17888c555a4b234386f287f6876e126, type: 3}
       Action: 0
+      InputKey: 0
+      AnimAdvance: 0.2
