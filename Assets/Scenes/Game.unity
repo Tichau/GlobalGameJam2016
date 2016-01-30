@@ -124,11 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f162822dbeeb1489d5f3de98523f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1757719286}
+  gameCamera: {fileID: 1757719286}
   Level: {fileID: 11400000, guid: b855679e270e0f546bc8d535a57c0cb4, type: 2}
-  Colors:
-  - {r: 0.101, g: 0.734375, b: 0.609, a: 1}
-  - {r: 0.1796875, g: 0.796875, b: 0.44140625, a: 1}
 --- !u!4 &867735102
 Transform:
   m_ObjectHideFlags: 0

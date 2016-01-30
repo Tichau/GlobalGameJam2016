@@ -13,19 +13,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bpm: 80
   Layers:
-  - StartingTime: 0
+  - Name: Bass
+    StartingTime: 0
     LoopDurationInNumberOfTimes: 4
     Notes:
     - StartTime: 0
       AudioClip: {fileID: 8300000, guid: f7aaffd6e0716714cb451dc7368a5a55, type: 3}
+      Action: 0
     - StartTime: 1
       AudioClip: {fileID: 8300000, guid: f7aaffd6e0716714cb451dc7368a5a55, type: 3}
+      Action: 0
     - StartTime: 1.5
       AudioClip: {fileID: 8300000, guid: e099d53e0fe85314886d3bf277b08683, type: 3}
+      Action: 0
     - StartTime: 3
       AudioClip: {fileID: 8300000, guid: acb88b1d8c6dbc440887c2f082f80234, type: 3}
-  - StartingTime: 0
+      Action: 0
+  - Name: Beat
+    StartingTime: 0
     LoopDurationInNumberOfTimes: 1
     Notes:
     - StartTime: 0
       AudioClip: {fileID: 8300000, guid: dc217a81e757e5c4f8c10a261e7d54c3, type: 3}
+      Action: 1

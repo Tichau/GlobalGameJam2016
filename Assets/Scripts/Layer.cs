@@ -5,6 +5,7 @@ using System;
 [Serializable]
 public class Layer
 {
+    public string Name;
     public float StartingTime;
     public float LoopDurationInNumberOfTimes;
     public List<Note> Notes;
