@@ -47,6 +47,11 @@ public class Level : ScriptableObject
         for (int index = 0; index < this.Layers.Count; index++)
         {
             this.Layers[index].Update(time, this.LayersUI[index]);
+
+            if (!this.Layers[index].IsValid)
+            {
+                break;
+            }
         }
     }
 }

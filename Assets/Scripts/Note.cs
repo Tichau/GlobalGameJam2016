@@ -18,8 +18,18 @@ public class Note
     [System.NonSerialized]
     private bool animAlreadyPlayed;
 
+    [System.NonSerialized]
+    public float Accuracy;
+
     public void Update(float time, LayerUI layerUI)
     {
+        if (Input.GetKeyDown(this.InputKey))
+        {
+            float accuracy = Mathf.Clamp01(0.01f / Mathf.Max(Mathf.Abs(time - this.StartTime), 0.001f));
+            this.Accuracy = Mathf.Max(this.Accuracy, accuracy);
+            Debug.Log("Accuracy: " + accuracy + " Max: " + this.Accuracy + " time: " + time + " start time: " + this.StartTime);
+        }
+
         if (time >= this.StartTime && !this.alreadyPlayed)
         {
             AudioManager.Instance.Play(this.AudioClip);
@@ -43,5 +53,6 @@ public class Note
     {
         this.alreadyPlayed = false;
         this.animAlreadyPlayed = false;
+        this.Accuracy = 0f;
     }
 }
