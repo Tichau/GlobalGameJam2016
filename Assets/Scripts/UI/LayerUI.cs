@@ -4,12 +4,9 @@ using UnityEngine.UI;
 
 public class LayerUI : MonoBehaviour
 {
-    public Text InputKeyText;
-    public GameObject InputKey;
-
-    public void DisplayInputKey(string key)
+    public void DisplayInputKey(string key, int noteIndex)
     {
-        this.InputKeyText.text = key;
-        this.InputKey.GetComponent<Animator>().SetTrigger("display");
+        this.transform.GetChild(noteIndex).gameObject.GetComponentInChildren<Text>().text = key;
+        this.transform.GetChild(noteIndex).GetComponent<Animator>().SetTrigger("display");
     }
 }

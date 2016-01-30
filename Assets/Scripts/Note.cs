@@ -18,7 +18,7 @@ public class Note
     [System.NonSerialized]
     private bool animAlreadyPlayed;
 
-    public void Update(float time, LayerUI layerUI)
+    public void Update(float time, LayerUI layerUI, int index)
     {
         if (time >= this.StartTime && !this.alreadyPlayed)
         {
@@ -34,7 +34,7 @@ public class Note
         }
         else if (time >= this.StartTime - this.AnimAdvance && !this.animAlreadyPlayed)
         {
-            layerUI.DisplayInputKey(Enum.GetName(typeof(KeyCode), this.InputKey));
+            layerUI.DisplayInputKey(Enum.GetName(typeof(KeyCode), this.InputKey), index);
             this.animAlreadyPlayed = true;
         }   
     }

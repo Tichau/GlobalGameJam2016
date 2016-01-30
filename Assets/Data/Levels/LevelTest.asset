@@ -23,8 +23,8 @@ MonoBehaviour:
       InputKey: 98
       AnimAdvance: 0.2
   - Name: Bass
-    StartingTime: 5
-    TimesByLoop: 8
+    StartingTime: 4
+    TimesByLoop: 4
     Notes:
     - StartTime: 0
       AudioClip: {fileID: 8300000, guid: d67acad9bd0c861428363258b4dc5b47, type: 3}
