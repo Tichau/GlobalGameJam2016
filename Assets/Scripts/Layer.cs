@@ -42,7 +42,7 @@ public class Layer
 
             for (int index = 0; index < this.Notes.Count; index++)
             {
-                this.Notes[index].Update(timeSinceCurrentLoopStart, layerUI);
+                this.Notes[index].Update(timeSinceCurrentLoopStart, layerUI, index);
             }
         }
     }

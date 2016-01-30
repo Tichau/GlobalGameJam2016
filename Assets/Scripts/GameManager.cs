@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     public Camera gameCamera;
-    public List<LayerUI> LayersUI = new List<LayerUI>();
+    public LayerUI InitialLayer;
 
     public static GameManager Instance
     {
@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     };
 
     private int currentColorIndex = 0;
+    private List<LayerUI> layersUI = new List<LayerUI>();
 
     public void ChangeBackgroundColor()
     {
@@ -47,11 +48,28 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        foreach (var layer in this.Level.Layers)
+        {
+            GameObject newLayer = Instantiate(InitialLayer.gameObject) as GameObject;
+            this.layersUI.Add(newLayer.GetComponent<LayerUI>());
+            newLayer.transform.SetParent(InitialLayer.transform.parent);
+            newLayer.transform.localScale = Vector3.one;
+
+            for (int i = 1; i < layer.Notes.Count; ++i)
+            {
+                GameObject note = Instantiate(newLayer.transform.GetChild(0).gameObject) as GameObject;
+                note.transform.SetParent(newLayer.transform);
+                note.transform.localScale = Vector3.one;
+            }
+        }
+
+        this.InitialLayer.gameObject.SetActive(false);
     }
 
 	private void Start ()
 	{
-	    this.Level.StartLevel(LayersUI);
+	    this.Level.StartLevel(layersUI);
 	}
 	
 	private void Update ()
