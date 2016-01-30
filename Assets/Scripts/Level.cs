@@ -12,6 +12,9 @@ public class Level : ScriptableObject
     public float Bpm;
     public List<Layer> Layers;
 
+    [System.NonSerialized]
+    private float startTime;
+
 #if UNITY_EDITOR
     [MenuItem("Assets/Create/Level")]
     public static void Create()
@@ -27,4 +30,20 @@ public class Level : ScriptableObject
         EditorUtility.FocusProjectWindow();
     }
 #endif
+
+    public void Start()
+    {
+        this.startTime = Time.time;
+    }
+
+    public void Update()
+    {
+        float timeDuration = 1 / (this.Bpm / 60);
+        float time = (Time.time - this.startTime) / timeDuration;
+
+        for (int index = 0; index < this.Layers.Count; index++)
+        {
+            this.Layers[index].Update(time);
+        }
+    }
 }

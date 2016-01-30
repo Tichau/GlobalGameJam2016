@@ -14,6 +14,13 @@ MonoBehaviour:
   Bpm: 80
   Layers:
   - StartingMeasure: 0
+    DurationInNumberOfMeasure: 0
     Notes:
     - StartTime: 0
-      AudioClip: {fileID: 0}
+      AudioClip: {fileID: 8300000, guid: 1d7b1abe89be61b4f86a5036366df250, type: 3}
+    - StartTime: 2
+      AudioClip: {fileID: 8300000, guid: f7aaffd6e0716714cb451dc7368a5a55, type: 3}
+    - StartTime: 4
+      AudioClip: {fileID: 8300000, guid: e099d53e0fe85314886d3bf277b08683, type: 3}
+    - StartTime: 6
+      AudioClip: {fileID: 8300000, guid: acb88b1d8c6dbc440887c2f082f80234, type: 3}
