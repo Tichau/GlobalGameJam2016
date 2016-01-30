@@ -7,7 +7,7 @@ public class Layer
 {
     public string Name;
     public float StartingTime;
-    public float LoopDurationInNumberOfTimes;
+    public float TimesByLoop;
     public List<Note> Notes;
 
     [System.NonSerialized]
@@ -18,9 +18,9 @@ public class Layer
         if (time >= this.StartingTime)
         {
             float timeSinceLayerStart = time - this.StartingTime;
-            float timeSinceCurrentLoopStart = timeSinceLayerStart % this.LoopDurationInNumberOfTimes;
+            float timeSinceCurrentLoopStart = timeSinceLayerStart % this.TimesByLoop;
 
-            if ((int)timeSinceLayerStart / (int) this.LoopDurationInNumberOfTimes > this.loopCount)
+            if ((int)timeSinceLayerStart / (int) this.TimesByLoop > this.loopCount)
             {
                 this.loopCount++;
                 for (int index = 0; index < this.Notes.Count; index++)
