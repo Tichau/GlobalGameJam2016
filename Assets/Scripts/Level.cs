@@ -44,7 +44,7 @@ public class Level : ScriptableObject
         this.LayersUI = layersUI;
     }
 
-    public void UpdateLevel(GameObject fx)
+    public void UpdateLevel(GameObject fx, GameObject fxError)
     {
         float timeDuration = 1 / (this.Bpm / 60);
         float time = (Time.time - this.startTime) / timeDuration;
@@ -58,7 +58,7 @@ public class Level : ScriptableObject
                 layer.StartLayer(time);
             }
 
-            layer.UpdateLayer(time, this.LayersUI[index], fx);
+            layer.UpdateLayer(time, this.LayersUI[index], fx, fxError);
 
             if (!layer.IsValid && !GameManager.Instance.GameEnded)
             {
