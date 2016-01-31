@@ -104,8 +104,16 @@ public class Note
                     GameManager.Instance.PlaySmokeRight();
                     break;
 
-                case Action.EmitABassParticule:
-                    GameManager.Instance.EmitBassParticle();
+                case Action.EmitABassParticule1:
+                    GameManager.Instance.EmitBassParticle(0);
+                    break;
+
+                case Action.EmitABassParticule2:
+                    GameManager.Instance.EmitBassParticle(1);
+                    break;
+
+                case Action.EmitABassParticule3:
+                    GameManager.Instance.EmitBassParticle(2);
                     break;
 
                 case Action.EndGame:

@@ -64,13 +64,13 @@ MonoBehaviour:
     - StartTime: 1.5
       AudioClipLite: {fileID: 8300000, guid: 8243bc0d10630a84b9e450856ecac3d6, type: 3}
       AudioClipFat: {fileID: 8300000, guid: db5f2b55e97acf04083763092ff0171b, type: 3}
-      Action: 4
+      Action: 5
       InputKey: 114
       AnimAdvance: 0.2
     - StartTime: 3
       AudioClipLite: {fileID: 8300000, guid: 7edbcddfb7d08e446914626a661138a4, type: 3}
       AudioClipFat: {fileID: 8300000, guid: 38d109005bc0af74f8d9f26efa4de1c4, type: 3}
-      Action: 4
+      Action: 6
       InputKey: 116
       AnimAdvance: 0.2
   - Name: End Game Reward

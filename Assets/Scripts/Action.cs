@@ -8,6 +8,8 @@ public enum Action
     ChangeBackgroundColor,
     PlaySmokeLeft,
     PlaySmokeRight,
-    EmitABassParticule,
+    EmitABassParticule1,
+    EmitABassParticule2,
+    EmitABassParticule3,
     EndGame
 }

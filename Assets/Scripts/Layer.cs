@@ -37,7 +37,7 @@ public class Layer
         set
         {
             this.score = Mathf.Clamp(value, 0, this.ScoreToReach*2f);
-            Debug.Log("Layer: " + this.Name + " Score: " + this.Score);
+//Debug.Log("Layer: " + this.Name + " Score: " + this.Score);
         }
     }
 
@@ -148,8 +148,8 @@ public class Layer
                     if (float.IsNaN(note.Accuracy) && float.IsNaN(note.NextAccuracy) && !note.AlreadyFailed &&
                         timeSinceCurrentLoopStart > note.StartTime + Note.Tolerance)
                     {
-                        Debug.Log(string.Format("Fail: acc: {0} next acc: {1} loop: {2}", note.Accuracy,
-                                note.NextAccuracy, this.loopCount));
+                       // Debug.Log(string.Format("Fail: acc: {0} next acc: {1} loop: {2}", note.Accuracy,
+                                //note.NextAccuracy, this.loopCount));
 
                         this.Score--;
                         note.AlreadyFailed = true;

@@ -11,7 +11,12 @@ public class GameManager : MonoBehaviour
     public GameObject FxPrefabError;
     public ParticleSystem SmokeFxLeft;
     public ParticleSystem SmokeFxRight;
-    public ParticleSystem BassFx;
+    public Animator BassFx1;
+    public Animator BassFx2;
+    public Animator BassFx3;
+    public Animator BassFx11;
+    public Animator BassFx22;
+    public Animator BassFx33;
 
     public static GameManager Instance
     {
@@ -34,12 +39,12 @@ public class GameManager : MonoBehaviour
         ColorUtils.FromHex("2ecc71"),
         ColorUtils.FromHex("3498db"),
         ColorUtils.FromHex("9b59b6"),
-        ColorUtils.FromHex("34495e"),
+       // ColorUtils.FromHex("34495e"),
         ColorUtils.FromHex("16a085"),
         ColorUtils.FromHex("27ae60"),
         ColorUtils.FromHex("2980b9"),
         ColorUtils.FromHex("8e44ad"),
-        ColorUtils.FromHex("2c3e50"),
+        //ColorUtils.FromHex("2c3e50"),
         ColorUtils.FromHex("f1c40f"),
         ColorUtils.FromHex("e67e22"),
         ColorUtils.FromHex("e74c3c"),
@@ -125,9 +130,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    internal void EmitBassParticle()
+    internal void EmitBassParticle(int index)
     {
-        //this.SmokeFxRight.startColor = this.Colors[this.currentColorIndex];
-        this.BassFx.Emit(1);
+        // this.BassFx.startColor = this.Colors[(this.currentColorIndex + (this.Colors.Length / 2)) % this.Colors.Length];
+        switch (index)
+        {
+            case 0:
+                this.BassFx1.SetTrigger("play");
+                this.BassFx11.SetTrigger("play");
+                break;
+            case 1:
+                this.BassFx2.SetTrigger("play");
+                this.BassFx22.SetTrigger("play");
+                break;
+            case 2:
+                this.BassFx3.SetTrigger("play");
+                this.BassFx33.SetTrigger("play");
+                break;
+
+            default:
+                break;
+        }
     }
 }
