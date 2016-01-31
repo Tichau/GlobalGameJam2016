@@ -53,7 +53,7 @@ public class Note
         }
         else if (relativeTime >= -this.AnimAdvance && !this.animAlreadyPlayed)
         {
-            layerUI.DisplayInputKey(Enum.GetName(typeof(KeyCode), this.InputKey), index);
+            layerUI.DisplayInputKey(index);
             this.animAlreadyPlayed = true;
         }   
     }
