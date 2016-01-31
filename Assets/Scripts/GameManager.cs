@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public Camera gameCamera;
     public LayerUI InitialLayer;
+    public GameObject FxPrefab;
 
     public static GameManager Instance
     {
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
             {
                 GameObject note = Instantiate(newLayer.transform.GetChild(0).gameObject) as GameObject;
                 note.transform.SetParent(newLayer.transform);
+                note.transform.localPosition = Vector3.zero;
                 note.transform.localScale = Vector3.one;
 
                 this.layersUI[this.layersUI.Count - 1].Init(layer.Notes[i].InputKey.ToString(), i);
@@ -97,12 +99,12 @@ public class GameManager : MonoBehaviour
 
         this.InitialLayer.gameObject.SetActive(false);
     }
-    
-	private void Update ()
-	{
-	    if (this.Level.IsStarted)
-	    {
-	        this.Level.UpdateLevel();
-	    }
-	}
+
+    private void Update()
+    {
+        if (this.Level.IsStarted)
+        {
+            this.Level.UpdateLevel(this.FxPrefab);
+        }
+    }
 }
