@@ -5,10 +5,19 @@ using System;
 [Serializable]
 public class Layer
 {
+    [UnityEngine.Range(0f, 1f)]
+    public float Difficulty = 0.5f;
+    
+    [UnityEngine.Range(0f, 10f)]
+    public float ScoreToReach = 3f;
+
     public string Name;
-    public float StartingTime;
+    public float StartingDelay;
     public float TimesByLoop;
     public List<Note> Notes;
+
+    [System.NonSerialized]
+    private float score;
 
     [System.NonSerialized]
     private int loopCount;
@@ -16,34 +25,81 @@ public class Layer
     [System.NonSerialized]
     public bool IsValid = false;
 
-    public void Update(float time, LayerUI layerUI)
+    [System.NonSerialized]
+    private float startTime = float.NaN;
+
+    public bool IsPlaying
     {
-        if (time >= this.StartingTime)
+        get { return !float.IsNaN(startTime); }
+    }
+
+    public void StartLayer(float time)
+    {
+        int measureSinceBegining = (int) time/4;
+        this.startTime = (measureSinceBegining + 1)*4;
+        this.loopCount = 0;
+        this.IsValid = false;
+        this.score = 0;
+        for (int index = 0; index < this.Notes.Count; index++)
         {
-            float timeSinceLayerStart = time - this.StartingTime;
-            float timeSinceCurrentLoopStart = timeSinceLayerStart % this.TimesByLoop;
+            this.Notes[index].Reset();
+        }
+    }
 
-            if ((int)timeSinceLayerStart / (int) this.TimesByLoop > this.loopCount)
-            {
-                this.IsValid = true;
-                for (int index = 0; index < this.Notes.Count; index++)
-                {
-                    this.IsValid &= this.Notes[index].Accuracy > 0.5f;
-                }
+    public void StopLayer()
+    {
+        this.startTime = float.NaN;
+    }
 
-                Debug.Log("Layer: " + this.Name + " IsValid: " + this.IsValid);
+    public void UpdateLayer(float time, LayerUI layerUI)
+    {
+        float startTimeWithDelay = this.startTime + this.StartingDelay;
 
-                this.loopCount++;
-                for (int index = 0; index < this.Notes.Count; index++)
-                {
-                    this.Notes[index].Reset();
-                }
-            }
+        float timeSinceLayerStart = time - startTimeWithDelay;
+        float timeSinceCurrentLoopStart = timeSinceLayerStart > 0
+            ? timeSinceLayerStart%this.TimesByLoop
+            : timeSinceLayerStart;
 
+        if ((int) timeSinceLayerStart/(int) this.TimesByLoop > this.loopCount)
+        {
             for (int index = 0; index < this.Notes.Count; index++)
             {
-                this.Notes[index].Update(timeSinceCurrentLoopStart, layerUI, index);
+                Note note = this.Notes[index];
+                if (float.IsNaN(note.Accuracy))
+                {
+                    this.score -= 1;
+                }
+                else
+                {
+                    this.score += note.Accuracy - this.Difficulty;
+                }
             }
+
+            this.score = Mathf.Max(0f, this.score);
+
+            this.IsValid = this.score >= this.ScoreToReach;
+
+            Debug.Log("Layer: " + this.Name + " Score: " + this.score + " IsValid: " + this.IsValid);
+
+            this.loopCount++;
+            for (int index = 0; index < this.Notes.Count; index++)
+            {
+                this.Notes[index].Reset();
+            }
+        }
+
+        for (int index = 0; index < this.Notes.Count; index++)
+        {
+            Note note = this.Notes[index];
+
+            float relativeTime = timeSinceCurrentLoopStart - note.StartTime;
+
+            if (Mathf.Abs(timeSinceCurrentLoopStart - this.TimesByLoop) < relativeTime)
+            {
+                relativeTime = timeSinceCurrentLoopStart - this.TimesByLoop;
+            }
+
+            note.UpdateNote(relativeTime, layerUI, index);
         }
     }
 }

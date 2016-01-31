@@ -5,6 +5,8 @@ using System;
 [Serializable]
 public class Note
 {
+    public const float Tolerance = 0.4f;
+
     [Tooltip("Musical Time")]
     public float StartTime;
     public AudioClip AudioClip;
@@ -21,16 +23,23 @@ public class Note
     [System.NonSerialized]
     public float Accuracy;
     
-    public void Update(float time, LayerUI layerUI, int index)
+    /// <summary>
+    /// Update the note state.
+    /// </summary>
+    /// <param name="relativeTime">The time relative to the note start (the note should be played when its value is 0).</param>
+    /// <param name="layerUI"></param>
+    /// <param name="index"></param>
+    public void UpdateNote(float relativeTime, LayerUI layerUI, int index)
     {
-        if (Input.GetKeyDown(this.InputKey))
+        if (Input.GetKeyDown(this.InputKey) && float.IsNaN(this.Accuracy))
         {
-            float accuracy = Mathf.Clamp01(0.01f / Mathf.Max(Mathf.Abs(time - this.StartTime), 0.001f));
-            this.Accuracy = Mathf.Max(this.Accuracy, accuracy);
-            Debug.Log("Accuracy: " + accuracy + " Max: " + this.Accuracy + " time: " + time + " start time: " + this.StartTime);
+            if (relativeTime >= -Tolerance && relativeTime <= Tolerance)
+            {
+                this.Accuracy = Mathf.Clamp01(Tolerance - Mathf.Abs(relativeTime)) / Tolerance;
+            }
         }
 
-        if (time >= this.StartTime && !this.alreadyPlayed)
+        if (relativeTime >= 0 && !this.alreadyPlayed)
         {
             AudioManager.Instance.Play(this.AudioClip);
             this.alreadyPlayed = true;
@@ -42,7 +51,7 @@ public class Note
                     break;
             }
         }
-        else if (time >= this.StartTime - this.AnimAdvance && !this.animAlreadyPlayed)
+        else if (relativeTime >= -this.AnimAdvance && !this.animAlreadyPlayed)
         {
             layerUI.DisplayInputKey(Enum.GetName(typeof(KeyCode), this.InputKey), index);
             this.animAlreadyPlayed = true;
@@ -53,6 +62,6 @@ public class Note
     {
         this.alreadyPlayed = false;
         this.animAlreadyPlayed = false;
-        this.Accuracy = 0f;
+        this.Accuracy = float.NaN;
     }
 }
