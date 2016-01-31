@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     public LayerUI InitialLayer;
     public GameObject FxPrefab;
     public GameObject FxPrefabError;
+    public ParticleSystem SmokeFx;
 
     public static GameManager Instance
     {
@@ -99,6 +101,12 @@ public class GameManager : MonoBehaviour
         }
 
         this.InitialLayer.gameObject.SetActive(false);
+    }
+
+    internal void PlaySmoke()
+    {
+        this.SmokeFx.startColor = this.Colors[this.currentColorIndex];
+        this.SmokeFx.Emit(10);
     }
 
     private void Update()

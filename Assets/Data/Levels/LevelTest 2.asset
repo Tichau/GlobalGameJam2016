@@ -34,13 +34,13 @@ MonoBehaviour:
     - StartTime: 0
       AudioClipLite: {fileID: 8300000, guid: 342d2fa01ffd17e46a50935f054ffd74, type: 3}
       AudioClipFat: {fileID: 8300000, guid: 31501e4e5d99278409fcd6a5fe32a712, type: 3}
-      Action: 0
+      Action: 2
       InputKey: 106
       AnimAdvance: 0.2
     - StartTime: 4
       AudioClipLite: {fileID: 8300000, guid: 901268279a4495b4b8bd050c2993a86e, type: 3}
       AudioClipFat: {fileID: 8300000, guid: 45822f6372f634045a8fd7c3cef88dad, type: 3}
-      Action: 0
+      Action: 2
       InputKey: 107
       AnimAdvance: 0.2
   - Name: Bass

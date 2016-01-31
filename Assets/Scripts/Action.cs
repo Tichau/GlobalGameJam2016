@@ -6,5 +6,6 @@ public enum Action
     None,
 
     ChangeBackgroundColor,
+    PlaySmoke,
     EndGame
 }

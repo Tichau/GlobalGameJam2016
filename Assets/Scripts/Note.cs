@@ -96,6 +96,10 @@ public class Note
                     GameManager.Instance.ChangeBackgroundColor();
                     break;
 
+                case Action.PlaySmoke:
+                    GameManager.Instance.PlaySmoke();
+                    break;
+
                 case Action.EndGame:
                     GameManager.Instance.EndGame();
                     break;
