@@ -36,7 +36,7 @@ public class Note
     /// <param name="relativeTime">The time relative to the note start (the note should be played when its value is 0).</param>
     /// <param name="layerUI"></param>
     /// <param name="index"></param>
-    public bool UpdateNote(float relativeTime, LayerUI layerUI, int index, float layerProgress, out KeyCode invalidKeyPressed, GameObject fx, GameObject fxError, float fillAmount)
+    public bool UpdateNote(float relativeTime, LayerUI layerUI, int index, float layerProgress, out KeyCode invalidKeyPressed, GameObject fx, GameObject fxError, float fillAmount, bool dontDisplayError)
     {
         invalidKeyPressed = KeyCode.None;
         bool validKeyPressed = false;
@@ -67,7 +67,7 @@ public class Note
                 {
                     invalidKeyPressed = this.InputKey;
 
-                    if (layerUI != null && invalidKeyPressed != KeyCode.None)
+                    if (!dontDisplayError && layerUI != null && invalidKeyPressed != KeyCode.None)
                     {
                         layerUI.DisplayFx(index, fxPlacement, fxError);
                     }
@@ -77,7 +77,7 @@ public class Note
             {
                 invalidKeyPressed = this.InputKey;
 
-                if (layerUI != null && invalidKeyPressed != KeyCode.None)
+                if (!dontDisplayError && layerUI != null && invalidKeyPressed != KeyCode.None)
                 {
                     layerUI.DisplayFx(index, fxPlacement, fxError);
                 }
