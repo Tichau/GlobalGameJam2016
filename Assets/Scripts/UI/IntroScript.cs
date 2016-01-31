@@ -47,6 +47,9 @@ public class IntroScript : MonoBehaviour
 
     private void StartFadeOut()
     {
-        this.fadeStart = Time.time;
+        if (float.IsNaN(this.fadeStart))
+        {
+            this.fadeStart = Time.time;
+        }
     }
 }

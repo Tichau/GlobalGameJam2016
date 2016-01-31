@@ -12,7 +12,8 @@ public class UILayerControl : MonoBehaviour
     public void SetVisible(bool visible)
     {
         this.visible = visible;
-        this.fadeStart = Time.time;
+        //this.fadeStart = Time.time;
+        this.gameObject.SetActive(visible);
     }
 
 	private void Start ()

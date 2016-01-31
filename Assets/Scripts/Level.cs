@@ -54,7 +54,7 @@ public class Level : ScriptableObject
             Layer layer = this.Layers[index];
             if (!layer.IsPlaying)
             {
-                this.LayersUI[index].gameObject.SetActive(true);
+                this.LayersUI[index].GetComponent<UILayerControl>().SetVisible(true);
                 layer.StartLayer(time);
             }
 
@@ -65,6 +65,10 @@ public class Level : ScriptableObject
                 for (int index2 = index + 1; index2 < this.Layers.Count; index2++)
                 {
                     this.Layers[index2].StopLayer();
+                    if (index2 < this.LayersUI.Count)
+                    {
+                        this.LayersUI[index2].GetComponent<UILayerControl>().SetVisible(false);
+                    }
                 }
 
                 break;
