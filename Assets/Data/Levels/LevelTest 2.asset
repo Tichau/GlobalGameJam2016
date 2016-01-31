@@ -40,7 +40,7 @@ MonoBehaviour:
     - StartTime: 4
       AudioClipLite: {fileID: 8300000, guid: 901268279a4495b4b8bd050c2993a86e, type: 3}
       AudioClipFat: {fileID: 8300000, guid: 45822f6372f634045a8fd7c3cef88dad, type: 3}
-      Action: 2
+      Action: 3
       InputKey: 107
       AnimAdvance: 0.2
   - Name: Bass
@@ -52,25 +52,25 @@ MonoBehaviour:
     - StartTime: 0
       AudioClipLite: {fileID: 8300000, guid: 4d8a882880d133a438175b2c25b481b1, type: 3}
       AudioClipFat: {fileID: 8300000, guid: 8922f9f669fe56545ae6a1a8fba0b9dc, type: 3}
-      Action: 0
+      Action: 4
       InputKey: 101
       AnimAdvance: 0.2
     - StartTime: 1
       AudioClipLite: {fileID: 8300000, guid: 4d8a882880d133a438175b2c25b481b1, type: 3}
       AudioClipFat: {fileID: 8300000, guid: 8922f9f669fe56545ae6a1a8fba0b9dc, type: 3}
-      Action: 0
+      Action: 4
       InputKey: 101
       AnimAdvance: 0.2
     - StartTime: 1.5
       AudioClipLite: {fileID: 8300000, guid: 8243bc0d10630a84b9e450856ecac3d6, type: 3}
       AudioClipFat: {fileID: 8300000, guid: db5f2b55e97acf04083763092ff0171b, type: 3}
-      Action: 0
+      Action: 4
       InputKey: 114
       AnimAdvance: 0.2
     - StartTime: 3
       AudioClipLite: {fileID: 8300000, guid: 7edbcddfb7d08e446914626a661138a4, type: 3}
       AudioClipFat: {fileID: 8300000, guid: 38d109005bc0af74f8d9f26efa4de1c4, type: 3}
-      Action: 0
+      Action: 4
       InputKey: 116
       AnimAdvance: 0.2
   - Name: End Game Reward

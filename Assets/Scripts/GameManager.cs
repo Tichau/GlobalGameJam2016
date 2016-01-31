@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
     public LayerUI InitialLayer;
     public GameObject FxPrefab;
     public GameObject FxPrefabError;
-    public ParticleSystem SmokeFx;
+    public ParticleSystem SmokeFxLeft;
+    public ParticleSystem SmokeFxRight;
+    public ParticleSystem BassFx;
 
     public static GameManager Instance
     {
@@ -103,10 +105,16 @@ public class GameManager : MonoBehaviour
         this.InitialLayer.gameObject.SetActive(false);
     }
 
-    internal void PlaySmoke()
+    internal void PlaySmokeLeft()
     {
-        this.SmokeFx.startColor = this.Colors[this.currentColorIndex];
-        this.SmokeFx.Emit(10);
+        this.SmokeFxLeft.startColor = this.Colors[this.currentColorIndex];
+        this.SmokeFxLeft.Emit(10);
+    }
+
+    internal void PlaySmokeRight()
+    {
+        this.SmokeFxRight.startColor = this.Colors[this.currentColorIndex];
+        this.SmokeFxRight.Emit(10);
     }
 
     private void Update()
@@ -115,5 +123,11 @@ public class GameManager : MonoBehaviour
         {
             this.Level.UpdateLevel(this.FxPrefab, this.FxPrefabError);
         }
+    }
+
+    internal void EmitBassParticle()
+    {
+        //this.SmokeFxRight.startColor = this.Colors[this.currentColorIndex];
+        this.BassFx.Emit(1);
     }
 }

@@ -96,8 +96,16 @@ public class Note
                     GameManager.Instance.ChangeBackgroundColor();
                     break;
 
-                case Action.PlaySmoke:
-                    GameManager.Instance.PlaySmoke();
+                case Action.PlaySmokeLeft:
+                    GameManager.Instance.PlaySmokeLeft();
+                    break;
+
+                case Action.PlaySmokeRight:
+                    GameManager.Instance.PlaySmokeRight();
+                    break;
+
+                case Action.EmitABassParticule:
+                    GameManager.Instance.EmitBassParticle();
                     break;
 
                 case Action.EndGame:
