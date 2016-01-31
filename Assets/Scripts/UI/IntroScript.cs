@@ -6,6 +6,7 @@ public class IntroScript : MonoBehaviour
 {
     public float FadeDuration;
 
+    private AudioSource audioSource;
     private Text[] textObjects;
     private Image titleBackground;
     private float fadeStart = float.NaN;
@@ -14,6 +15,7 @@ public class IntroScript : MonoBehaviour
 
     private void Start()
     {
+        this.audioSource = this.GetComponent<AudioSource>();
         this.textObjects = this.GetComponentsInChildren<Text>();
         this.titleBackground = this.GetComponent<Image>();
         this.startBackgroundAlpha = this.titleBackground.color.a;
@@ -34,6 +36,7 @@ public class IntroScript : MonoBehaviour
             if (remainingTime <= float.Epsilon)
             {
                 this.gameObject.SetActive(false);
+                this.audioSource.Stop();
                 GameManager.Instance.StartGame();
             }
             else
@@ -46,6 +49,8 @@ public class IntroScript : MonoBehaviour
                     Text text = this.textObjects[index];
                     text.color = new Color(text.color.r, text.color.g, text.color.b, this.startTextAlpha * ratio);
                 }
+
+                this.audioSource.volume = ratio;
             }
         }
 	}
