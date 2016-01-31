@@ -37,7 +37,6 @@ public class Layer
         set
         {
             this.score = Mathf.Clamp(value, 0, this.ScoreToReach*2f);
-//Debug.Log("Layer: " + this.Name + " Score: " + this.Score);
         }
     }
 
