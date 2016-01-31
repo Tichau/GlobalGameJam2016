@@ -33,6 +33,11 @@ public class Layer
         get { return !float.IsNaN(startTime); }
     }
 
+    public float Progress
+    {
+        get { return Mathf.Clamp01(this.score/this.ScoreToReach); }
+    }
+
     public void StartLayer(float time)
     {
         int measureSinceBegining = (int) time/4;
@@ -77,7 +82,7 @@ public class Layer
 
             this.score = Mathf.Max(0f, this.score);
 
-            this.IsValid = this.score >= this.ScoreToReach;
+            this.IsValid = this.Progress >= 1;
 
             Debug.Log("Layer: " + this.Name + " Score: " + this.score + " IsValid: " + this.IsValid);
 
@@ -99,7 +104,7 @@ public class Layer
                 relativeTime = timeSinceCurrentLoopStart - this.TimesByLoop;
             }
 
-            note.UpdateNote(relativeTime, layerUI, index);
+            note.UpdateNote(relativeTime, layerUI, index, this.Progress);
         }
     }
 }

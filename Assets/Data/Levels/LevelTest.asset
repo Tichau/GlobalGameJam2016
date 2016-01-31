@@ -20,7 +20,8 @@ MonoBehaviour:
     TimesByLoop: 1
     Notes:
     - StartTime: 0
-      AudioClip: {fileID: 8300000, guid: dc217a81e757e5c4f8c10a261e7d54c3, type: 3}
+      AudioClipLite: {fileID: 8300000, guid: 212fe60d644606247bc4fb130b328f7a, type: 3}
+      AudioClipFat: {fileID: 8300000, guid: 1eaf1accc8516264e8d811303008226b, type: 3}
       Action: 1
       InputKey: 98
       AnimAdvance: 0.2
@@ -31,22 +32,26 @@ MonoBehaviour:
     TimesByLoop: 4
     Notes:
     - StartTime: 0
-      AudioClip: {fileID: 8300000, guid: d67acad9bd0c861428363258b4dc5b47, type: 3}
+      AudioClipLite: {fileID: 8300000, guid: 4d8a882880d133a438175b2c25b481b1, type: 3}
+      AudioClipFat: {fileID: 8300000, guid: 8922f9f669fe56545ae6a1a8fba0b9dc, type: 3}
       Action: 0
       InputKey: 97
       AnimAdvance: 0.2
     - StartTime: 1
-      AudioClip: {fileID: 8300000, guid: d67acad9bd0c861428363258b4dc5b47, type: 3}
+      AudioClipLite: {fileID: 8300000, guid: 4d8a882880d133a438175b2c25b481b1, type: 3}
+      AudioClipFat: {fileID: 8300000, guid: 8922f9f669fe56545ae6a1a8fba0b9dc, type: 3}
       Action: 0
       InputKey: 97
       AnimAdvance: 0.2
     - StartTime: 1.5
-      AudioClip: {fileID: 8300000, guid: 0d1dbd3e06d8acb458828c12536a7e28, type: 3}
+      AudioClipLite: {fileID: 8300000, guid: 8243bc0d10630a84b9e450856ecac3d6, type: 3}
+      AudioClipFat: {fileID: 8300000, guid: db5f2b55e97acf04083763092ff0171b, type: 3}
       Action: 0
       InputKey: 122
       AnimAdvance: 0.2
     - StartTime: 3
-      AudioClip: {fileID: 8300000, guid: 5c1afb789bd83d34297b83a75ed894f6, type: 3}
+      AudioClipLite: {fileID: 8300000, guid: 7edbcddfb7d08e446914626a661138a4, type: 3}
+      AudioClipFat: {fileID: 8300000, guid: 38d109005bc0af74f8d9f26efa4de1c4, type: 3}
       Action: 0
       InputKey: 101
       AnimAdvance: 0.2

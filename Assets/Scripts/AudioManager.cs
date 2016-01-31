@@ -17,8 +17,8 @@ public class AudioManager : MonoBehaviour
         Instance = this;
     }
 
-    public void Play(AudioClip audioClip)
+    public void Play(AudioClip audioClip, float volume = 1f)
     {
-        this.source.PlayOneShot(audioClip);
+        this.source.PlayOneShot(audioClip, volume);
     }
 }
