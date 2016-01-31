@@ -121,14 +121,33 @@ public class Layer
             Note note = this.Notes[index];
 
             float relativeTime = timeSinceCurrentLoopStart - note.StartTime;
-
+            
             if (Mathf.Abs(timeSinceCurrentLoopStart - this.TimesByLoop) < relativeTime)
             {
                 relativeTime = timeSinceCurrentLoopStart - this.TimesByLoop;
             }
 
+            // Try to know if some other note override my need for error feedback.
+            bool dontDisplayError = false;
+            for (int j = 0; j < index; j++)
+            {
+                if (relativeTime <= this.Notes[j].StartTime + Note.Tolerance && this.Notes[j].InputKey == note.InputKey)
+                {
+                    dontDisplayError = true;
+                }
+            }
+
+            for (int j = index + 1; j < this.Notes.Count; j++)
+            {
+                if (relativeTime > note.StartTime + Note.Tolerance && this.Notes[j].InputKey == note.InputKey)
+                {
+                    dontDisplayError = true;
+                }
+            }
+
+            // Test the note.
             KeyCode invalidKeyPressed;
-            if (note.UpdateNote(relativeTime, layerUI, index, this.Progress, out invalidKeyPressed, fx, fxError, this.Progress))
+            if (note.UpdateNote(relativeTime, layerUI, index, this.Progress, out invalidKeyPressed, fx, fxError, this.Progress, dontDisplayError))
             {
                 this.validKeyPressed.Add(note.InputKey);
                 
