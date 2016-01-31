@@ -14,7 +14,7 @@ MonoBehaviour:
   Bpm: 80
   Layers:
   - Name: Beat
-    ScoreToReach: 4
+    ScoreToReach: 6
     AudioClipError: {fileID: 8300000, guid: 60ec7b1b171cf034fadc5b6cc6165c3d, type: 3}
     StartingDelay: 0
     TimesByLoop: 1
@@ -26,7 +26,7 @@ MonoBehaviour:
       InputKey: 98
       AnimAdvance: 0.2
   - Name: Vocal
-    ScoreToReach: 2
+    ScoreToReach: 3
     AudioClipError: {fileID: 8300000, guid: 60ec7b1b171cf034fadc5b6cc6165c3d, type: 3}
     StartingDelay: 0
     TimesByLoop: 8
@@ -44,7 +44,7 @@ MonoBehaviour:
       InputKey: 107
       AnimAdvance: 0.2
   - Name: Bass
-    ScoreToReach: 8
+    ScoreToReach: 9
     AudioClipError: {fileID: 0}
     StartingDelay: 0
     TimesByLoop: 4

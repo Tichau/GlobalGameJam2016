@@ -23,7 +23,13 @@ public class Note
     
     [System.NonSerialized]
     public float Accuracy;
-    
+
+    [System.NonSerialized]
+    public float NextAccuracy = float.NaN;
+
+    [System.NonSerialized]
+    public bool AlreadyFailed;
+
     /// <summary>
     /// Update the note state.
     /// </summary>
@@ -37,17 +43,41 @@ public class Note
         if (Input.GetKeyDown(this.InputKey))
         {
             float fxPlacement = relativeTime / Tolerance;
-            if (float.IsNaN(this.Accuracy) && relativeTime >= -Tolerance && relativeTime <= Tolerance)
+            if (relativeTime >= -Tolerance && relativeTime <= Tolerance)
             {
-                this.Accuracy = Mathf.Clamp01(Tolerance - Mathf.Abs(relativeTime)) / Tolerance;
-                validKeyPressed = true;
-                layerUI.DisplayFx(index, fxPlacement, fx);
+                if (float.IsNaN(this.Accuracy) && relativeTime >= 0)
+                {
+                    this.Accuracy = Mathf.Clamp01(Tolerance - Mathf.Abs(relativeTime)) / Tolerance;
+                    validKeyPressed = true;
+                    if (layerUI != null)
+                    {
+                        layerUI.DisplayFx(index, fxPlacement, fx);
+                    }
+                }
+                else if (float.IsNaN(this.NextAccuracy) && relativeTime < 0)
+                {
+                    this.NextAccuracy = Mathf.Clamp01(Tolerance - Mathf.Abs(relativeTime)) / Tolerance;
+                    validKeyPressed = true;
+                    if (layerUI != null)
+                    {
+                        layerUI.DisplayFx(index, fxPlacement, fx);
+                    }
+                }
+                else
+                {
+                    invalidKeyPressed = this.InputKey;
+
+                    if (layerUI != null && invalidKeyPressed != KeyCode.None)
+                    {
+                        layerUI.DisplayFx(index, fxPlacement, fxError);
+                    }
+                }
             }
             else
             {
                 invalidKeyPressed = this.InputKey;
 
-                if (invalidKeyPressed != KeyCode.None)
+                if (layerUI != null && invalidKeyPressed != KeyCode.None)
                 {
                     layerUI.DisplayFx(index, fxPlacement, fxError);
                 }
@@ -73,11 +103,18 @@ public class Note
         }
         else if (relativeTime >= -this.AnimAdvance && !this.animAlreadyPlayed)
         {
-            layerUI.DisplayInputKey(index);
+            if (layerUI != null)
+            {
+                layerUI.DisplayInputKey(index);
+            }
+
             this.animAlreadyPlayed = true;
         }
 
-        layerUI.UpdateNote(index, fillAmount);
+        if (layerUI != null)
+        {
+            layerUI.UpdateNote(index, fillAmount);
+        }
 
         return validKeyPressed;
     }
@@ -86,6 +123,12 @@ public class Note
     {
         this.alreadyPlayed = false;
         this.animAlreadyPlayed = false;
-        this.Accuracy = float.NaN;
+        this.Accuracy = this.NextAccuracy;
+        if (!float.IsNaN(this.NextAccuracy))
+        {
+            Debug.Log(string.Format("Transfert accuracy: {0}", this.Accuracy));
+        }
+        this.NextAccuracy = float.NaN;
+        this.AlreadyFailed = false;
     }
 }

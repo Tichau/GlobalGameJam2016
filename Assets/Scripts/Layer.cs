@@ -23,9 +23,6 @@ public class Layer
     private int loopCount;
 
     [System.NonSerialized]
-    public bool IsValid = false;
-
-    [System.NonSerialized]
     private float startTime = float.NaN;
 
     [System.NonSerialized]
@@ -33,6 +30,21 @@ public class Layer
 
     [System.NonSerialized]
     List<KeyCode> validKeyPressed = new List<KeyCode>();
+    
+    public float Score
+    {
+        get { return this.score; }
+        set
+        {
+            this.score = Mathf.Clamp(value, 0, this.ScoreToReach*2f);
+            Debug.Log("Layer: " + this.Name + " Score: " + this.Score);
+        }
+    }
+
+    public bool IsValid
+    {
+        get { return this.ScoreToReach <= 0f || this.Progress >= 1f; }
+    }
 
     public bool IsPlaying
     {
@@ -65,7 +77,6 @@ public class Layer
         int measureSinceBegining = (int) time/4;
         this.startTime = (measureSinceBegining + 1)*4;
         this.loopCount = 0;
-        this.IsValid = this.ScoreToReach <= 0f;
         this.score = 0;
         for (int index = 0; index < this.Notes.Count; index++)
         {
@@ -80,7 +91,7 @@ public class Layer
 
     public void OnErrorAppend(int errorCount)
     {
-        this.score = Mathf.Clamp(this.score - errorCount, 0f, this.ScoreToReach * 2f);
+        this.Score = this.Score - errorCount;
         AudioManager.Instance.Play(this.AudioClipError);
         // TODO: Some visual or audio feedback ?
     }
@@ -96,25 +107,6 @@ public class Layer
 
         if ((int) timeSinceLayerStart/(int) this.TimesByLoop > this.loopCount)
         {
-            for (int index = 0; index < this.Notes.Count; index++)
-            {
-                Note note = this.Notes[index];
-                if (float.IsNaN(note.Accuracy))
-                {
-                    this.score -= 1;
-                }
-                else
-                {
-                    this.score += note.Accuracy;
-                }
-            }
-
-            this.score = Mathf.Clamp(this.score, 0f, this.ScoreToReach * 2f);
-
-            this.IsValid = this.Progress >= 1;
-
-            Debug.Log("Layer: " + this.Name + " Score: " + this.score + " IsValid: " + this.IsValid);
-
             this.loopCount++;
             for (int index = 0; index < this.Notes.Count; index++)
             {
@@ -139,6 +131,30 @@ public class Layer
             if (note.UpdateNote(relativeTime, layerUI, index, this.Progress, out invalidKeyPressed, fx, fxError, this.Progress))
             {
                 this.validKeyPressed.Add(note.InputKey);
+                
+                if (relativeTime >= 0f)
+                {
+                    this.Score += note.Accuracy;
+                }
+                else
+                {
+                    this.Score += note.NextAccuracy;
+                }
+            }
+            else
+            {
+                if (relativeTime >= 0f)
+                {
+                    if (float.IsNaN(note.Accuracy) && float.IsNaN(note.NextAccuracy) && !note.AlreadyFailed &&
+                        timeSinceCurrentLoopStart > note.StartTime + Note.Tolerance)
+                    {
+                        Debug.Log(string.Format("Fail: acc: {0} next acc: {1} loop: {2}", note.Accuracy,
+                                note.NextAccuracy, this.loopCount));
+
+                        this.Score--;
+                        note.AlreadyFailed = true;
+                    }
+                }
             }
 
             if (invalidKeyPressed != KeyCode.None)
