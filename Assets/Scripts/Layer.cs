@@ -69,7 +69,7 @@ public class Layer
         // TODO: Some visual or audio feedback ?
     }
 
-    public void UpdateLayer(float time, LayerUI layerUI)
+    public void UpdateLayer(float time, LayerUI layerUI, GameObject fx)
     {
         float startTimeWithDelay = this.startTime + this.StartingDelay;
 
@@ -120,7 +120,7 @@ public class Layer
             }
 
             KeyCode invalidKeyPressed;
-            if (note.UpdateNote(relativeTime, layerUI, index, this.Progress, out invalidKeyPressed))
+            if (note.UpdateNote(relativeTime, layerUI, index, this.Progress, out invalidKeyPressed, fx))
             {
                 this.validKeyPressed.Add(note.InputKey);
             }
