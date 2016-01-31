@@ -30,7 +30,7 @@ public class Note
     /// <param name="relativeTime">The time relative to the note start (the note should be played when its value is 0).</param>
     /// <param name="layerUI"></param>
     /// <param name="index"></param>
-    public bool UpdateNote(float relativeTime, LayerUI layerUI, int index, float layerProgress, out KeyCode invalidKeyPressed, GameObject fx)
+    public bool UpdateNote(float relativeTime, LayerUI layerUI, int index, float layerProgress, out KeyCode invalidKeyPressed, GameObject fx, float fillAmount)
     {
         invalidKeyPressed = KeyCode.None;
         bool validKeyPressed = false;
@@ -71,6 +71,8 @@ public class Note
             layerUI.DisplayInputKey(index);
             this.animAlreadyPlayed = true;
         }
+
+        layerUI.UpdateNote(index, fillAmount);
 
         return validKeyPressed;
     }

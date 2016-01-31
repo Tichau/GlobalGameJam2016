@@ -120,7 +120,7 @@ public class Layer
             }
 
             KeyCode invalidKeyPressed;
-            if (note.UpdateNote(relativeTime, layerUI, index, this.Progress, out invalidKeyPressed, fx))
+            if (note.UpdateNote(relativeTime, layerUI, index, this.Progress, out invalidKeyPressed, fx, this.Progress))
             {
                 this.validKeyPressed.Add(note.InputKey);
             }
