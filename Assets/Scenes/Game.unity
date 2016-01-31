@@ -423,6 +423,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 1757719286}
   InitialLayer: {fileID: 1472323461}
+  FxPrefab: {fileID: 101086, guid: 3879d41e10e57e34c91263b4b21af3e9, type: 2}
+  FxPrefabError: {fileID: 176138, guid: 5360f85b34ca91c40b32a43ee8a2c77d, type: 2}
   Level: {fileID: 11400000, guid: 5850c729ef8362040bdaee397d1ac80d, type: 2}
 --- !u!4 &867735102
 Transform:
@@ -494,11 +496,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 4d8fdcbe5e2c2754cbd5e887ad0cab33, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 0
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!222 &1043511094
