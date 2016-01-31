@@ -23,7 +23,7 @@ MonoBehaviour:
       InputKey: 98
       AnimAdvance: 0.2
   - Name: Bass
-    StartingTime: 4
+    StartingTime: 5
     TimesByLoop: 4
     Notes:
     - StartTime: 0

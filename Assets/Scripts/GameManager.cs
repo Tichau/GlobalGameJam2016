@@ -56,11 +56,15 @@ public class GameManager : MonoBehaviour
             newLayer.transform.SetParent(InitialLayer.transform.parent);
             newLayer.transform.localScale = Vector3.one;
 
+
+            this.layersUI[this.layersUI.Count - 1].Init(layer.Notes[0].InputKey.ToString(), 0);
             for (int i = 1; i < layer.Notes.Count; ++i)
             {
                 GameObject note = Instantiate(newLayer.transform.GetChild(0).gameObject) as GameObject;
                 note.transform.SetParent(newLayer.transform);
                 note.transform.localScale = Vector3.one;
+
+                this.layersUI[this.layersUI.Count - 1].Init(layer.Notes[i].InputKey.ToString(), i);
             }
         }
 
