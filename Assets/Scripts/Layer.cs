@@ -39,6 +39,22 @@ public class Layer
         get { return !float.IsNaN(startTime); }
     }
 
+    public bool NeedInteraction
+    {
+        get
+        {
+            for (int index = 0; index < this.Notes.Count; index++)
+            {
+                if (this.Notes[index].InputKey != KeyCode.None)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
+
     public float Progress
     {
         get { return Mathf.Clamp01(this.score/this.ScoreToReach); }

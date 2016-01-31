@@ -13,9 +13,14 @@ public class Level : ScriptableObject
     public List<Layer> Layers;
 
     [System.NonSerialized]
-    private float startTime;
+    private float startTime = float.NaN;
     [System.NonSerialized]
     private List<LayerUI> LayersUI;
+
+    public bool IsStarted
+    {
+        get { return !float.IsNaN(startTime); }
+    }
 
 #if UNITY_EDITOR
     [MenuItem("Assets/Create/Level")]
@@ -49,6 +54,7 @@ public class Level : ScriptableObject
             Layer layer = this.Layers[index];
             if (!layer.IsPlaying)
             {
+                this.LayersUI[index].gameObject.SetActive(true);
                 layer.StartLayer(time);
             }
 

@@ -56,17 +56,31 @@ public class GameManager : MonoBehaviour
         this.GameEnded = true;
     }
 
+    public void StartGame()
+    {
+        this.Level.StartLevel(layersUI);
+
+        for (int index = 0; index < this.layersUI.Count; index++)
+        {
+            //this.layersUI[index].
+        }
+    }
+
     private void Awake()
     {
         Instance = this;
 
-        foreach (var layer in this.Level.Layers)
+        foreach (Layer layer in this.Level.Layers)
         {
+            if (!layer.NeedInteraction)
+            {
+                continue;
+            }
+
             GameObject newLayer = Instantiate(InitialLayer.gameObject) as GameObject;
             this.layersUI.Add(newLayer.GetComponent<LayerUI>());
             newLayer.transform.SetParent(InitialLayer.transform.parent);
             newLayer.transform.localScale = Vector3.one;
-
 
             this.layersUI[this.layersUI.Count - 1].Init(layer.Notes[0].InputKey.ToString(), 0);
             for (int i = 1; i < layer.Notes.Count; ++i)
@@ -77,18 +91,18 @@ public class GameManager : MonoBehaviour
 
                 this.layersUI[this.layersUI.Count - 1].Init(layer.Notes[i].InputKey.ToString(), i);
             }
+
+            this.layersUI[this.layersUI.Count - 1].gameObject.SetActive(false);
         }
 
         this.InitialLayer.gameObject.SetActive(false);
     }
-
-	private void Start ()
-	{
-	    this.Level.StartLevel(layersUI);
-	}
-	
+    
 	private void Update ()
 	{
-	    this.Level.UpdateLevel();
+	    if (this.Level.IsStarted)
+	    {
+	        this.Level.UpdateLevel();
+	    }
 	}
 }
