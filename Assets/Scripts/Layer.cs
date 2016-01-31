@@ -5,13 +5,14 @@ using System;
 [Serializable]
 public class Layer
 {
+    public string Name;
+
     [UnityEngine.Range(0f, 1f)]
     public float Difficulty = 0.5f;
     
     [UnityEngine.Range(0f, 10f)]
     public float ScoreToReach = 3f;
 
-    public string Name;
     public float StartingDelay;
     public float TimesByLoop;
     public List<Note> Notes;
@@ -43,7 +44,7 @@ public class Layer
         int measureSinceBegining = (int) time/4;
         this.startTime = (measureSinceBegining + 1)*4;
         this.loopCount = 0;
-        this.IsValid = false;
+        this.IsValid = this.ScoreToReach <= 0f;
         this.score = 0;
         for (int index = 0; index < this.Notes.Count; index++)
         {

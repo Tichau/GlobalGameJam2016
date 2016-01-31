@@ -288,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 1757719286}
   InitialLayer: {fileID: 1472323461}
-  Level: {fileID: 11400000, guid: b855679e270e0f546bc8d535a57c0cb4, type: 2}
+  Level: {fileID: 11400000, guid: 5850c729ef8362040bdaee397d1ac80d, type: 2}
 --- !u!4 &867735102
 Transform:
   m_ObjectHideFlags: 0
@@ -480,8 +480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586e72832b7b04c4f82fd80ec102f7d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputKeyText: {fileID: 742309038}
-  InputKey: {fileID: 1043511091}
 --- !u!114 &1472323462
 MonoBehaviour:
   m_ObjectHideFlags: 0
