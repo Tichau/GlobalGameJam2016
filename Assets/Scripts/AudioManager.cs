@@ -19,6 +19,11 @@ public class AudioManager : MonoBehaviour
 
     public void Play(AudioClip audioClip, float volume = 1f)
     {
+        if (audioClip == null)
+        {
+            return;
+        }
+
         this.source.PlayOneShot(audioClip, volume);
     }
 }

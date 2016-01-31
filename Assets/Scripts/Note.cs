@@ -5,7 +5,7 @@ using System;
 [Serializable]
 public class Note
 {
-    public const float Tolerance = 0.4f;
+    public const float Tolerance = 0.2f;
 
     [Tooltip("Musical Time")]
     public float StartTime;
@@ -30,13 +30,20 @@ public class Note
     /// <param name="relativeTime">The time relative to the note start (the note should be played when its value is 0).</param>
     /// <param name="layerUI"></param>
     /// <param name="index"></param>
-    public void UpdateNote(float relativeTime, LayerUI layerUI, int index, float layerProgress)
+    public bool UpdateNote(float relativeTime, LayerUI layerUI, int index, float layerProgress, out KeyCode invalidKeyPressed)
     {
-        if (Input.GetKeyDown(this.InputKey) && float.IsNaN(this.Accuracy))
+        invalidKeyPressed = KeyCode.None;
+        bool validKeyPressed = false;
+        if (Input.GetKeyDown(this.InputKey))
         {
-            if (relativeTime >= -Tolerance && relativeTime <= Tolerance)
+            if (float.IsNaN(this.Accuracy) && relativeTime >= -Tolerance && relativeTime <= Tolerance)
             {
                 this.Accuracy = Mathf.Clamp01(Tolerance - Mathf.Abs(relativeTime)) / Tolerance;
+                validKeyPressed = true;
+            }
+            else
+            {
+                invalidKeyPressed = this.InputKey;
             }
         }
 
@@ -61,7 +68,9 @@ public class Note
         {
             layerUI.DisplayInputKey(index);
             this.animAlreadyPlayed = true;
-        }   
+        }
+
+        return validKeyPressed;
     }
 
     public void Reset()

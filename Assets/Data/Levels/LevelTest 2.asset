@@ -14,8 +14,8 @@ MonoBehaviour:
   Bpm: 80
   Layers:
   - Name: Beat
-    Difficulty: 0.5
     ScoreToReach: 4
+    AudioClipError: {fileID: 8300000, guid: 60ec7b1b171cf034fadc5b6cc6165c3d, type: 3}
     StartingDelay: 0
     TimesByLoop: 1
     Notes:
@@ -26,8 +26,8 @@ MonoBehaviour:
       InputKey: 98
       AnimAdvance: 0.2
   - Name: Vocal
-    Difficulty: 0.5
-    ScoreToReach: 1
+    ScoreToReach: 2
+    AudioClipError: {fileID: 8300000, guid: 60ec7b1b171cf034fadc5b6cc6165c3d, type: 3}
     StartingDelay: 0
     TimesByLoop: 8
     Notes:
@@ -44,8 +44,8 @@ MonoBehaviour:
       InputKey: 107
       AnimAdvance: 0.2
   - Name: Bass
-    Difficulty: 0.5
-    ScoreToReach: 4
+    ScoreToReach: 8
+    AudioClipError: {fileID: 0}
     StartingDelay: 0
     TimesByLoop: 4
     Notes:
@@ -53,29 +53,29 @@ MonoBehaviour:
       AudioClipLite: {fileID: 8300000, guid: 4d8a882880d133a438175b2c25b481b1, type: 3}
       AudioClipFat: {fileID: 8300000, guid: 8922f9f669fe56545ae6a1a8fba0b9dc, type: 3}
       Action: 0
-      InputKey: 97
+      InputKey: 101
       AnimAdvance: 0.2
     - StartTime: 1
       AudioClipLite: {fileID: 8300000, guid: 4d8a882880d133a438175b2c25b481b1, type: 3}
       AudioClipFat: {fileID: 8300000, guid: 8922f9f669fe56545ae6a1a8fba0b9dc, type: 3}
       Action: 0
-      InputKey: 97
+      InputKey: 101
       AnimAdvance: 0.2
     - StartTime: 1.5
       AudioClipLite: {fileID: 8300000, guid: 8243bc0d10630a84b9e450856ecac3d6, type: 3}
       AudioClipFat: {fileID: 8300000, guid: db5f2b55e97acf04083763092ff0171b, type: 3}
       Action: 0
-      InputKey: 122
+      InputKey: 114
       AnimAdvance: 0.2
     - StartTime: 3
       AudioClipLite: {fileID: 8300000, guid: 7edbcddfb7d08e446914626a661138a4, type: 3}
       AudioClipFat: {fileID: 8300000, guid: 38d109005bc0af74f8d9f26efa4de1c4, type: 3}
       Action: 0
-      InputKey: 101
+      InputKey: 116
       AnimAdvance: 0.2
   - Name: End Game Reward
-    Difficulty: 0.5
     ScoreToReach: 0
+    AudioClipError: {fileID: 8300000, guid: 60ec7b1b171cf034fadc5b6cc6165c3d, type: 3}
     StartingDelay: 0
     TimesByLoop: 8
     Notes:

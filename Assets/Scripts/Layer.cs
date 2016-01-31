@@ -6,12 +6,11 @@ using System;
 public class Layer
 {
     public string Name;
-
-    [UnityEngine.Range(0f, 1f)]
-    public float Difficulty = 0.5f;
     
     [UnityEngine.Range(0f, 10f)]
     public float ScoreToReach = 3f;
+
+    public AudioClip AudioClipError;
 
     public float StartingDelay;
     public float TimesByLoop;
@@ -28,6 +27,12 @@ public class Layer
 
     [System.NonSerialized]
     private float startTime = float.NaN;
+
+    [System.NonSerialized]
+    List<KeyCode> invalidKeyPressed = new List<KeyCode>();
+
+    [System.NonSerialized]
+    List<KeyCode> validKeyPressed = new List<KeyCode>();
 
     public bool IsPlaying
     {
@@ -57,6 +62,13 @@ public class Layer
         this.startTime = float.NaN;
     }
 
+    public void OnErrorAppend(int errorCount)
+    {
+        this.score = Mathf.Clamp(this.score - errorCount, 0f, this.ScoreToReach * 2f);
+        AudioManager.Instance.Play(this.AudioClipError);
+        // TODO: Some visual or audio feedback ?
+    }
+
     public void UpdateLayer(float time, LayerUI layerUI)
     {
         float startTimeWithDelay = this.startTime + this.StartingDelay;
@@ -77,11 +89,11 @@ public class Layer
                 }
                 else
                 {
-                    this.score += note.Accuracy - this.Difficulty;
+                    this.score += note.Accuracy;
                 }
             }
 
-            this.score = Mathf.Max(0f, this.score);
+            this.score = Mathf.Clamp(this.score, 0f, this.ScoreToReach * 2f);
 
             this.IsValid = this.Progress >= 1;
 
@@ -94,6 +106,8 @@ public class Layer
             }
         }
 
+        this.validKeyPressed.Clear();
+        this.invalidKeyPressed.Clear();
         for (int index = 0; index < this.Notes.Count; index++)
         {
             Note note = this.Notes[index];
@@ -105,7 +119,27 @@ public class Layer
                 relativeTime = timeSinceCurrentLoopStart - this.TimesByLoop;
             }
 
-            note.UpdateNote(relativeTime, layerUI, index, this.Progress);
+            KeyCode invalidKeyPressed;
+            if (note.UpdateNote(relativeTime, layerUI, index, this.Progress, out invalidKeyPressed))
+            {
+                this.validKeyPressed.Add(note.InputKey);
+            }
+
+            if (invalidKeyPressed != KeyCode.None)
+            {
+                this.invalidKeyPressed.Add(invalidKeyPressed);
+            }
+        }
+
+        // If keys have been pressed outside range of any note, decrease the score.
+        for (int index = 0; index < this.validKeyPressed.Count; index++)
+        {
+            this.invalidKeyPressed.RemoveAll(match => match == this.validKeyPressed[index]);
+        }
+
+        if (this.invalidKeyPressed.Count > 0)
+        {
+            this.OnErrorAppend(this.invalidKeyPressed.Count);
         }
     }
 }
