@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public Camera gameCamera;
     public LayerUI InitialLayer;
     public GameObject FxPrefab;
+    public GameObject FxPrefabError;
 
     public static GameManager Instance
     {
@@ -91,6 +92,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        this.Level.UpdateLevel(this.FxPrefab);
+        this.Level.UpdateLevel(this.FxPrefab, this.FxPrefabError);
     }
 }
