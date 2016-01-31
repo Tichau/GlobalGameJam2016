@@ -54,7 +54,7 @@ public class Level : ScriptableObject
 
             layer.UpdateLayer(time, this.LayersUI[index]);
 
-            if (!layer.IsValid)
+            if (!layer.IsValid && !GameManager.Instance.GameEnded)
             {
                 for (int index2 = index + 1; index2 < this.Layers.Count; index2++)
                 {

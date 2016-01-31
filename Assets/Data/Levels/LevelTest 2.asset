@@ -77,11 +77,11 @@ MonoBehaviour:
     Difficulty: 0.5
     ScoreToReach: 0
     StartingDelay: 0
-    TimesByLoop: 16
+    TimesByLoop: 8
     Notes:
     - StartTime: 0
       AudioClipLite: {fileID: 8300000, guid: 946e03f235abe8b4d8f09e47a7e8ea6c, type: 3}
       AudioClipFat: {fileID: 0}
-      Action: 0
+      Action: 2
       InputKey: 0
       AnimAdvance: 0.2

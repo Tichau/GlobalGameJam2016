@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
         private set;
     }
 
+    public bool GameEnded
+    {
+        get;
+        private set;
+    }
+
     public Level Level;
 
     [System.NonSerialized]
@@ -43,6 +49,11 @@ public class GameManager : MonoBehaviour
     {
         this.currentColorIndex = (this.currentColorIndex + 1) % this.Colors.Length;
         this.gameCamera.backgroundColor = this.Colors[this.currentColorIndex];
+    }
+
+    public void EndGame()
+    {
+        this.GameEnded = true;
     }
 
     private void Awake()

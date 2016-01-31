@@ -5,5 +5,6 @@ public enum Action
 {
     None,
 
-    ChangeBackgroundColor
+    ChangeBackgroundColor,
+    EndGame
 }

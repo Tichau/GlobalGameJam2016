@@ -51,6 +51,10 @@ public class Note
                 case Action.ChangeBackgroundColor:
                     GameManager.Instance.ChangeBackgroundColor();
                     break;
+
+                case Action.EndGame:
+                    GameManager.Instance.EndGame();
+                    break;
             }
         }
         else if (relativeTime >= -this.AnimAdvance && !this.animAlreadyPlayed)
