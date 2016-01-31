@@ -46,7 +46,23 @@ public class Level : ScriptableObject
 
         for (int index = 0; index < this.Layers.Count; index++)
         {
-            this.Layers[index].Update(time, this.LayersUI[index]);
+            Layer layer = this.Layers[index];
+            if (!layer.IsPlaying)
+            {
+                layer.StartLayer(time);
+            }
+
+            layer.UpdateLayer(time, this.LayersUI[index]);
+
+            if (!layer.IsValid)
+            {
+                for (int index2 = index + 1; index2 < this.Layers.Count; index2++)
+                {
+                    this.Layers[index2].StopLayer();
+                }
+
+                break;
+            }
         }
     }
 }

@@ -13,8 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bpm: 80
   Layers:
-  - Name: Beat
-    StartingTime: 1
+  - Difficulty: 0.5
+    ScoreToReach: 3
+    Name: Beat
+    StartingDelay: 0
     TimesByLoop: 1
     Notes:
     - StartTime: 0
@@ -22,8 +24,10 @@ MonoBehaviour:
       Action: 1
       InputKey: 98
       AnimAdvance: 0.2
-  - Name: Bass
-    StartingTime: 5
+  - Difficulty: 0.5
+    ScoreToReach: 3
+    Name: Bass
+    StartingDelay: 0
     TimesByLoop: 4
     Notes:
     - StartTime: 0
