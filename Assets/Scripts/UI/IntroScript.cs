@@ -6,8 +6,7 @@ public class IntroScript : MonoBehaviour
 {
     public float FadeDuration;
 
-    public Text TextObject;
-
+    private Text[] textObjects;
     private Image titleBackground;
     private float fadeStart = float.NaN;
     private float startBackgroundAlpha;
@@ -15,9 +14,10 @@ public class IntroScript : MonoBehaviour
 
     private void Start()
     {
+        this.textObjects = this.GetComponentsInChildren<Text>();
         this.titleBackground = this.GetComponent<Image>();
         this.startBackgroundAlpha = this.titleBackground.color.a;
-        this.startTextAlpha = this.TextObject.color.a;
+        this.startTextAlpha = 1;
     }
 
     private void Update()
@@ -40,7 +40,12 @@ public class IntroScript : MonoBehaviour
             {
                 float ratio = remainingTime / this.FadeDuration;
                 this.titleBackground.color = new Color(this.titleBackground.color.r, this.titleBackground.color.g, this.titleBackground.color.b, this.startBackgroundAlpha * ratio);
-                this.TextObject.color = new Color(this.TextObject.color.r, this.TextObject.color.g, this.TextObject.color.b, this.startTextAlpha * ratio);
+
+                for (int index = 0; index < this.textObjects.Length; index++)
+                {
+                    Text text = this.textObjects[index];
+                    text.color = new Color(text.color.r, text.color.g, text.color.b, this.startTextAlpha * ratio);
+                }
             }
         }
 	}
