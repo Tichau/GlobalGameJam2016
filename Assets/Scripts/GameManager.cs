@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public Animator BassFx22;
     public Animator BassFx33;
 
+    private float rotationSpeed;
+
     public static GameManager Instance
     {
         get;
@@ -65,6 +67,7 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         this.GameEnded = true;
+        this.rotationSpeed = 0.5f;
     }
 
     public void StartGame()
@@ -127,6 +130,11 @@ public class GameManager : MonoBehaviour
         if (this.Level.IsStarted)
         {
             this.Level.UpdateLevel(this.FxPrefab, this.FxPrefabError);
+        }
+
+        if (this.rotationSpeed > 0f)
+        {
+            this.gameCamera.transform.Rotate(Vector3.forward, this.rotationSpeed);
         }
     }
 
